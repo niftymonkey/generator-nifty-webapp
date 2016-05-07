@@ -1,0 +1,59 @@
+{
+  "name": "generator-nifty-webapp",
+  "version": "0.0.1",
+  "description": "Generates a new app based on Nifty Web App (https://github.com/niftymonkey/nifty-webapp)",
+  "homepage": "",
+  "author": {
+    "name": "Mark Lozano",
+    "email": "mark.d.lozano@gmail.com",
+    "url": "https://github.com/niftymonkey"
+  },
+  "files": [
+    "generators/app"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "es6",
+    "es2015",
+    "esNext",
+    "transpile",
+    "babel",
+    "webpack",
+    "nifty",
+    "webapp",
+    "nifty-webapp",
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "~1.0.0",
+    "yeoman-generator": "~0.22.6",
+    "yosay": "~1.0.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.1.0",
+    "eslint-config-xo-space": "^0.12.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-plumber": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "git@github.com:niftymonkey/generator-nifty-webapp.git",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
+}
