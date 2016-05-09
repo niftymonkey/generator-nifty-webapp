@@ -10,13 +10,50 @@ describe('generator-nifty-webapp:app', function () {
       .on('end', done);
   });
 
-  it('creates the files', function () {
+  it('creates the application files', function () {
+    // TODO: assert generator properties are injected
     assert.file([
       'src/index.html',
-      'src/js/index.js',
-      'package.json',
-      'README.md',
+      'src/js/index.js'
+    ]);
+  });
+
+  it('creates the asset files', function () {
+    assert.file([
+      'src/assets/img/yeoman-logo.png',
+      'src/assets/styles/app.css',
+      'src/assets/styles/base.css'
+    ]);
+  });
+
+  it('creates the dotfiles', function () {
+    assert.file([
+      '.babelrc',
+      '.editorconfig',
+      '.eslintrc',
+      '.gitignore'
+    ]);
+  });
+
+  it('creates the webpack config', function () {
+    // TODO: assert (future) config choices are respected
+    assert.file([
       'webpack.config.js'
     ]);
   });
+
+  it('creates the package.json', function () {
+    // TODO: assert generator properties are injected
+    assert.file([
+      'package.json'
+    ]);
+  });
+
+  it('creates the README file', function () {
+    // TODO: assert generator properties are injected
+    assert.file([
+      'README.md'
+    ]);
+  });
+
 });

@@ -68,6 +68,15 @@ module.exports = YeomanGenerator.Base.extend({
       }
     );
 
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md'), {
+        name: this.answers.name,
+        description: this.answers.description,
+        author: this.answers.author
+      }
+    );
+
     // TOP LEVEL CONFIG
     ///////////////////////////////////////////////////////////////////////////
 
@@ -75,16 +84,24 @@ module.exports = YeomanGenerator.Base.extend({
       this.templatePath('webpack.config.js'),
       this.destinationPath('webpack.config.js'));
 
-    this.fs.copy(
-      this.templatePath('README.md'),
-      this.destinationPath('README.md'));
 
-    // SOURCE FILES
+    // OTHER SOURCE FILES
     ///////////////////////////////////////////////////////////////////////////
+
+    this.fs.copy(
+      this.templatePath('src/assets'),
+      this.destinationPath('src/assets'));
 
     this.fs.copy(
       this.templatePath('src/js'),
       this.destinationPath('src/js'));
+
+    // DOT FILES
+    ///////////////////////////////////////////////////////////////////////////
+
+    this.fs.copy(
+      this.templatePath('./.*'),
+      this.destinationPath('.'));
   },
 
   install: function () {

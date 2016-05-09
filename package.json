@@ -1,7 +1,7 @@
 {
   "name": "generator-nifty-webapp",
-  "version": "0.0.1",
-  "description": "Generates a new app based on Nifty Web App (https://github.com/niftymonkey/nifty-webapp)",
+  "version": "0.1.0",
+  "description": "Minimal modern webapp boilerplate using babel and webpack.  Based on Nifty Web App (https://github.com/niftymonkey/nifty-webapp)",
   "homepage": "",
   "author": {
     "name": "Mark Lozano",
