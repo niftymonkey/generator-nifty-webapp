@@ -8,24 +8,49 @@ module.exports = {
   //            https://webpack.github.io/docs/configuration.html#devtool
   devtool: 'source-map',
 
+  devServer: {
+    port: 3000,
+    contentBase: "./dist",
+    stats: "minimal"
+  },
+
   // set to false to see a list of every file being bundled.
   noInfo: true,
 
   // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   target: 'web',
 
-  // HMR middleware + entry point for the app
-  entry: [
-    './src/js/index.js'
-  ],
+  // Entry points for the app bundles
+  entry: {
+    // As an array so that we can unshift in the HMR plugin if we need to
+    app: [
+      './src/js/index.js'
+    ]
+    // Separate bundle for any production dependencies.
+    // TODO: Uncomment and add third-party dependencies as needed
+    //,vendor: [
+    //]
+  },
 
   output: {
-    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
-    publicPath: './',
-    filename: 'js/app.js'
+    // Note: Physical files are only output by the production build task `npm run build`.
+    path: path.join(__dirname, '/dist'),
+    filename: 'js/[name].js'
   },
 
   plugins: [
+    // Pulls commonly used modules into common chunks that are reused in other chunks
+    // TODO: uncomment below if you add third-party dependencies into the vendor entry point bundle
+    //new webpack.optimize.CommonsChunkPlugin({
+    //  name: 'vendor',
+    //  filename: 'js/vendor.js'
+    //}),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
 
   module: {
@@ -37,11 +62,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader?sourceMap!autoprefixer-loader"
+        loader: "style!css?sourceMap!autoprefixer"
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: "file-loader?name=img/[name]-[hash:6].[ext]"
+        loader: "file?name=img/[name]-[hash:6].[ext]"
+      },
+      {
+        test: /\.(html|htm)$/,
+        loader: "file?name=[name].[ext]"
       }
     ]
   }

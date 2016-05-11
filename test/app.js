@@ -14,6 +14,8 @@ describe('generator-nifty-webapp:app', function () {
     // TODO: assert generator properties are injected
     assert.file([
       'src/index.html',
+      'src/js/components/header.js',
+      'src/js/components/logo.js',
       'src/js/index.js'
     ]);
   });
@@ -32,6 +34,13 @@ describe('generator-nifty-webapp:app', function () {
       '.editorconfig',
       '.eslintrc',
       '.gitignore'
+    ]);
+  });
+
+  it('creates the webpack-dev-server script', function () {
+    // TODO: assert (future) config choices are respected
+    assert.file([
+      'server.js'
     ]);
   });
 

@@ -84,6 +84,10 @@ module.exports = YeomanGenerator.Base.extend({
       this.templatePath('webpack.config.js'),
       this.destinationPath('webpack.config.js'));
 
+    this.fs.copy(
+      this.templatePath('server.js'),
+      this.destinationPath('server.js'));
+
 
     // OTHER SOURCE FILES
     ///////////////////////////////////////////////////////////////////////////
@@ -110,7 +114,7 @@ module.exports = YeomanGenerator.Base.extend({
     this.npmInstall(null, null, function() {
       this.log(chalk.green("Your new nifty web app is generated and ready to go!\n"));
       this.log(chalk.cyan("Type the following to build the app:\n"));
-      this.log(chalk.cyan("    npm run build"));
+      this.log(chalk.cyan("    npm start"));
     }.bind(this));
   }
 
