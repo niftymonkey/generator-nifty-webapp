@@ -1,6 +1,6 @@
 import "../index.html";
-import "../assets/styles/base.css";
-import "../assets/styles/app.css";
+import "../assets/styles/css/base.css";
+import "../assets/styles/css/app.css";
 
 import Header from './components/header';
 import Logo from './components/logo';

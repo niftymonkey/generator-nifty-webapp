@@ -36,6 +36,18 @@ module.exports = YeomanGenerator.Base.extend({
       name: 'author',
       message: 'Author',
       default: this.defaults.authorName
+    },{
+      type: 'list',
+      name: 'styleFlavor',
+      message: 'What style flavor do you prefer?',
+      choices: [{
+        name: "CSS",
+        value: "css"
+      },{
+        name: "LESS",
+        value: "less"
+      }],
+      default: "css"
     }];
 
     this.prompt(prompts, function (answers) {
@@ -52,29 +64,20 @@ module.exports = YeomanGenerator.Base.extend({
 
     this.fs.copyTpl(
       this.templatePath('src/_index.html'),
-      this.destinationPath('src/index.html'), {
-        name: this.answers.name,
-        description: this.answers.description,
-        author: this.answers.author
-      }
+      this.destinationPath('src/index.html'),
+      this.answers
     );
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('package.json'), {
-        name: this.answers.name,
-        description: this.answers.description,
-        author: this.answers.author
-      }
+      this.destinationPath('package.json'),
+      this.answers
     );
 
     this.fs.copyTpl(
       this.templatePath('_README.md'),
-      this.destinationPath('README.md'), {
-        name: this.answers.name,
-        description: this.answers.description,
-        author: this.answers.author
-      }
+      this.destinationPath('README.md'),
+      this.answers
     );
 
     // TOP LEVEL CONFIG
@@ -93,8 +96,8 @@ module.exports = YeomanGenerator.Base.extend({
     ///////////////////////////////////////////////////////////////////////////
 
     this.fs.copy(
-      this.templatePath('src/assets'),
-      this.destinationPath('src/assets'));
+      this.templatePath('src/assets/img'),
+      this.destinationPath('src/assets/img'));
 
     this.fs.copy(
       this.templatePath('src/js'),
@@ -106,6 +109,21 @@ module.exports = YeomanGenerator.Base.extend({
     this.fs.copy(
       this.templatePath('./.*'),
       this.destinationPath('.'));
+
+    // OPTIONS
+    ///////////////////////////////////////////////////////////////////////////
+    switch(this.answers.styleFlavor) {
+      case "less":
+        this.fs.copy(
+          this.templatePath('src/assets/styles/less'),
+          this.destinationPath('src/assets/styles'));
+        break;
+      case "css":
+      default:
+        this.fs.copy(
+          this.templatePath('src/assets/styles/css'),
+          this.destinationPath('src/assets/styles'));
+    }
   },
 
   install: function () {

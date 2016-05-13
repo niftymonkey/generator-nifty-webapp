@@ -3,10 +3,10 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('generator-nifty-webapp:app', function () {
+describe('generator:app - Default Value Tests', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({someAnswer: true})
+      .withPrompts()
       .on('end', done);
   });
 
