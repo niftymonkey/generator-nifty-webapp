@@ -4,11 +4,15 @@
 
 
 ## Usage
-To use this boilerplate as a basis for a new application:
+While developing, you will probably rely mostly on `npm start`.  Here are some of the other useful commands:  
 
-1. Clone this repo
-2. Change the relevant bits in package.json
-3. Run the following: `npm i && npm start`
-4. Open `http://localhost:3000`
-    
-And that's it!  
+|`npm run <script>`|Description|
+|:------------------|:-----------|
+|`start`|Serves your app at `localhost:3000`.|
+|`dev`|Same as `npm start`, but runs the dev server with Hot Module Reloading enabled.|
+|`build`|Compiles the application to disk (`/dist` by default).|
+|`watch`|Same as `npm run build` but watches for file changes and re-compiles accordingly.|
+|`clean`|Deletes the `/dist` directory.|
+|`lint`|Lint all `.js` files.|
+
+For the full list, see the scripts section of `package.json`

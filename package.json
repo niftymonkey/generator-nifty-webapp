@@ -1,6 +1,6 @@
 {
   "name": "generator-nifty-webapp",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "description": "Minimal modern webapp boilerplate using babel and webpack.  Based on Nifty Web App (https://github.com/niftymonkey/nifty-webapp)",
   "homepage": "",
   "author": {
